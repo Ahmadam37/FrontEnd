@@ -1,0 +1,332 @@
+<html
+  xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+    <style> 
+    #contentBox {MARGIN-LEFT: 5px;}
+    #sideNavBox {DISPLAY: none;} 
+     #s4-titlerow {height: 1px !important;} 
+    #suiteBarDelta {DISPLAY: none !important;} 
+    #O365_NavHeader{display: none;}
+    #DeltaPageStatusBar {display:none;}
+    #titleAreaBox {display: none ;} 
+    #s4-ribbonrow 
+    {
+      /*display: none!important;*/
+    } 
+   
+    
+    .ms-webpartPage-root {
+        border-spacing: 0px !important;
+      }
+
+    .ms-webpartzone-cell {
+        margin: 0px !important;
+      }
+
+      body {
+        font-family: DIN NEXT LT ARABIC !important;
+      }
+      
+
+      .container,
+      .containerDashboard,
+      .containerTasks,
+      .containerResource {
+        position: relative;
+        max-width: 250px;
+        margin: 35px 30px 20px 0;
+        bottom: 20px;
+        /* flex-direction: row; */
+        /* flex-flow: row; */
+        /* top: -150px; */
+        z-index: 20;
+      }
+
+      .ElmImage {
+        display: block;
+        width: 90px;
+        height: 75px;
+      }
+
+      .image {
+        display: block;
+        width: 42px;
+        height: 42px;
+        transition: 1s;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0px;
+        left: 60px;
+        right: 0;
+        /* background-color: rgb(250, 250, 250); */
+        background-color: rgb(255, 255, 255);
+        border-left-color: rgb(240, 240, 240);
+        overflow: hidden;
+        width: 0;
+        height: 100%;
+        transition: 0.5s ease;
+        mix-blend-mode: hue;
+      }
+
+      .container:hover .overlay {
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-left-color: rgb(149, 45, 152);
+        width: 110px;
+      }
+
+      .container:hover .image {
+        -ms-transform: scale(1.3);
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+
+      .containerDashboard:hover .overlay {
+        width: 100%;
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-left-color: rgb(149, 45, 152);
+      }
+
+      .containerDashboard:hover .image {
+        -ms-transform: scale(1.3);
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+
+      .containerResource:hover .overlay {
+        width: 100%;
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-left-color: rgb(149, 45, 152);
+      }
+
+      .containerResource:hover .image {
+        -ms-transform: scale(1.3);
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+
+      .containerTasks:hover .overlay {
+        width: 100%;
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-left-color: rgb(149, 45, 152);
+      }
+
+      .containerTasks:hover .image {
+        -ms-transform: scale(1.3);
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+
+      .text {
+        font-family: DIN Next LT Arabic, sans-serif;
+        color: rgb(114, 46, 165);
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+      }
+
+      .containerDashboard .button .image {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 40px;
+        border: white;
+      }
+
+      .leftDev {
+        width: 100px;
+        float: left;
+        margin-left: 20px;
+      }
+      .rightDev {
+        float: left;
+        /* height: 800px; */
+        width: calc(100% - 100px);
+        position: relative;
+        overflow: hidden;
+        margin-top: -125px;
+      }
+      .iframe {
+        width: 100%;
+        height: 800px;
+      }
+    </style>
+    <script language="javascript" type="text/javascript">
+      function createNewProject() {
+        SP.UI.ModalDialog.ShowPopupDialog(
+          "http://elm-psdb-wv-02/runtime/Runtime/Form/Project+Request+Form_2E"
+        );
+      }
+      function openProjectCenter() {
+        hostUrl = _spPageContextInfo.siteAbsoluteUrl;
+
+        //var myFrame = document.getElementById("epmV4Frame");
+
+        // myFrame.src = hostUrl + "/pages/projectcenter.aspx ";
+
+        window.open(hostUrl + "/pages/projectcenter.aspx");
+      }
+
+      function openRequests() {
+        hostUrl = _spPageContextInfo.siteAbsoluteUrl;
+
+        var myFrame = document.getElementById("epmV4Frame");
+
+        myFrame.src = hostUrl + "/pages/projectrequests.aspx";
+      }
+
+      function openDashboard() {
+        var urlDashboard =
+          //   "http://bi.nahj.elm.sa/reports/powerbi/PMO%20Dashboard%20v3.2?rs:embed=true";
+          "http://bi.nahj.elm.sa/Reports/powerbi/PMO%20Dashboard%20v3.2?rs:Command=Render&rc:Toolbar=false";
+        var win = window.open(urlDashboard, "_blank");
+        win.focus();
+      }
+
+      function openResourceCenter() {
+        hostUrl = _spPageContextInfo.siteAbsoluteUrl;
+
+        var myFrame = document.getElementById("epmV4Frame");
+
+        myFrame.src = hostUrl + "/resources.aspx?isdlg=1";
+      }
+
+      function openMyTasks() {
+        hostUrl = _spPageContextInfo.siteAbsoluteUrl;
+
+        var myFrame = document.getElementById("epmV4Frame");
+
+        myFrame.src = hostUrl + "/Tasks.aspx?isdlg=1";
+      }
+
+      function openSettings() {
+        hostUrl = _spPageContextInfo.siteAbsoluteUrl;
+
+        var myFrame = document.getElementById("epmV4Frame");
+
+        myFrame.src = hostUrl + "/_layouts/15/pwa/Admin/Admin.aspx?isdlg=1";
+      }
+    </script>
+    <!--[if gte mso 9
+      ]><xml>
+        <mso:CustomDocumentProperties>
+          <mso:_dlc_DocId msdt:dt="string"
+            >7CP4ZU5533QS-1271-241</mso:_dlc_DocId
+          >
+          <mso:_dlc_DocIdItemGuid msdt:dt="string"
+            >60013f73-15fb-47c5-b795-72afa225c7b2</mso:_dlc_DocIdItemGuid
+          >
+          <mso:_dlc_DocIdUrl msdt:dt="string"
+            >http://elm-epm-dev-02/PWA/_layouts/15/DocIdRedir.aspx?ID=7CP4ZU5533QS-1271-241,
+            7CP4ZU5533QS-1271-241</mso:_dlc_DocIdUrl
+          >
+        </mso:CustomDocumentProperties>
+      </xml><!
+    [endif]-->
+  </head>
+
+  <body>
+    <div class="leftDev">
+      <div class="container">
+        <img
+          src="http://elm-epm-dev-02/PWA/siteassets/elm.png"
+          class="ElmImage"
+        />
+      </div>
+
+      <div class="container">
+        <a onclick="createNewProject()">
+          <img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/plus.png"
+            class="image"
+        /></a>
+        <div class="overlay">
+          <div class="text">New Project</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <a href="http://elm-epm-dev-02/PWA/pages/projectrequests.aspx">
+          <img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/completed128.png"
+            class="image"
+        /></a>
+        <div class="overlay">
+          <div class="text">My Requests</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <a onclick="openProjectCenter()">
+          <img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/project 2016.png"
+            class="image"
+        /></a>
+        <div class="overlay">
+          <div class="text">Projects</div>
+        </div>
+      </div>
+
+      <div class="containerDashboard">
+        <!-- <a onclick="openDashboard()"
+          ><img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/bar-chart128.png"
+            class="image"
+        /></a> -->
+        <a
+          href="http://bi.nahj.elm.sa/Reports/powerbi/PMO%20Dashboard%20v3.2?rs:Command=Render&rc:Toolbar=false"
+          ><img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/bar-chart128.png"
+            class="image"
+        /></a>
+        <div class="overlay">
+          <div class="text">Dashboard</div>
+        </div>
+      </div>
+
+      <div class="containerResource">
+        <a onclick="openResourceCenter()"
+          ><img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/teamwork128.png"
+            class="image"
+        /></a>
+        <div class="overlay">
+          <div class="text">Resource</div>
+        </div>
+      </div>
+
+      <div class="containerTasks">
+        <a onclick="openMyTasks()"
+          ><img
+            src="http://elm-epm-dev-02/PWA/siteassets/icons/checklist128.png"
+            class="image"
+        /></a>
+        <div class="overlay">
+          <div class="text">Tasks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="rightDev">
+       <iframe
+        class="iframe"
+        id="epmV4Frame"
+        src="http://elm-epm-dev-02/pwa/projects.aspx?isdlg=1"
+      ></iframe>
+    </div> -->
+  </body>
+</html>
